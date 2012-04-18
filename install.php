@@ -30,26 +30,38 @@ require_once 'uD_config.php';
 
     try {
         $dbh = new PDO("mysql:host=$host", $root, $root_password);
-		
-		echo "creating database $db";
-        $dbh->exec("CREATE DATABASE IF NOT EXIST `$db`;") 
-        or  trigger_error('Creating Database Failed: ' . mysql_error($db), E_USER_ERROR); 
-        
-		echo "creating user $user";
-		$dbh->exec("
-                CREATE USER '$user'@'$host' IDENTIFIED BY '$pass';
-                GRANT ALL ON `$db`.* TO '$user'@'$host';
-                FLUSH PRIVILEGES;") 
-        or  trigger_error('Creating User Failed: ' . mysql_error($db), E_USER_ERROR); 
-      
+		 
+		 $e=$dbh->query("SELECT 1 FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$db';")->fetchAll();
+		 	$db_exists=$e[0];
+
 		
 		
+		if( !$db_exists)
+		{
+			echo "Creating Database $db";
+			$dbh->exec("CREATE DATABASE $db ;
+	        		    FLUSH PRIVILEGES;")
+						or  trigger_error('Creating Database Failed: ' . mysql_error(), E_USER_ERROR);
+		}else{echo "database exists already";}
 		
-	
-
-
-
-
+		 $e=$dbh->query("SELECT 1 FROM mysql.user WHERE USER = '$user';")->fetchAll();
+		 	$user_exists=$e[0][1];
+		
+		if(!$user_exists)
+		{
+			echo "Creating User";
+			$dbh->exec("CREATE USER `$user`@`$host`;
+	               		GRANT ALL ON `$db`.* TO `$user`@`$host`;
+	               		SET PASSWORD FOR `$user`@`$host` = PASSWORD(`$pass`);
+	        		    FLUSH PRIVILEGES;");
+						
+			
+		}else{echo "user already exists";}
+		 
+		
+		
+		
+		
     } catch (PDOException $e) {
         die("DB ERROR: ". $e->getMessage());
     }

@@ -7,12 +7,12 @@
 
  define('DB_HOST','localhost');
  define('DB_ROOT','root');
- define('DB_ROOTPASS','rootpass');
+ define('DB_ROOTPASS','');
  
- define('DB_USER','ud_admin');
+ define('DB_USER','uduser');
  define('DB_USERPASS','udpass'); 
 
- define('DB_NAME','ud_DB');
+ define('DB_NAME','ud_DB);
 
 
 ?>
