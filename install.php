@@ -19,7 +19,7 @@ if(false){?>
 	</html>	
 <?php }//makes sure php is running
 
-require_once 'uD_config.php';//loads config
+require_once 'uD_config.php';//loads configuration
 
 	$host=DB_HOST;
 	$root=DB_ROOT; 
@@ -59,10 +59,10 @@ require_once 'uD_config.php';//loads config
 			$dbh=null;//close connection
 		}
 	 catch (PDOException $e){
-        die(" DB ERROR: ". $e->getMessage());
+        die(" Problem Creating Database and User: ". $e->getMessage());
      }
      
-     try{//t2
+     try{
 		$dbh = new PDO("mysql:host=$host;dbname=$db", $user, $pass);//use created db and user from now on 
 		//add tables
 		echo "adding tables<br>";
@@ -119,7 +119,7 @@ require_once 'uD_config.php';//loads config
 						  `Hash` binary(32) NOT NULL,
 						  `Salt` char(16) NOT NULL,
 						  `Created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-						  `Permissions` varchar(64) NOT NULL,
+						  `Permissions` tinyint(1) NOT NULL DEFAULT '1',
 						  PRIMARY KEY (`ID`),
 						  UNIQUE KEY `Name` (`Name`),
 						  UNIQUE KEY `Email` (`Email`)
@@ -138,7 +138,7 @@ require_once 'uD_config.php';//loads config
 			$dbh=null;
 		
     } catch (PDOException $e) {
-        die("DB ERROR: ". $e->getMessage());
+        die("Error Adding Tables: ". $e->getMessage());
     }
  
 	
