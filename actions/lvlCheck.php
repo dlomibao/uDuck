@@ -11,5 +11,5 @@
  }else{
  	echo "not logged into an account<br>";
  	die();}
-echo "valid";
+
 ?>

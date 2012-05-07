@@ -6,8 +6,8 @@
  require_once "../uD_config.php";//load settings
  require_once "./act.php";
  session_start();
- act::checkLvl(3);
- echo "continue";
+ if(!act::checkLvl(3)){die();}
+
  
  
  
