@@ -35,7 +35,7 @@ require_once 'uD_config.php';//loads configuration
 			 echo "host: $host <br>";
 			 //query if database exists
 			 $check=$dbh->query("SELECT 1 FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$db';")->fetchAll();
-			 $db_exists=$check[0];
+			 $db_exists=$check[0];//need to fix for when there isn't anything in the information_chema.Schemata
 	
 			if( !$db_exists)
 			{
