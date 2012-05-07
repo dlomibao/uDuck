@@ -1,4 +1,3 @@
-
 <?php
 /**uDuck Config File
  * this is where the basic configuration goes

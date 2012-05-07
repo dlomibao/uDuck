@@ -2,6 +2,9 @@
 /**
  * uDuck addUser
  * adds a user to the user table
+ * 
+ * TODO:
+ * add checks for duplicate usernames/emails
  */
 
  require_once "../uD_config.php";//load settings
