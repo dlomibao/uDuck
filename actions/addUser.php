@@ -40,17 +40,5 @@ $statement = $db->prepare('INSERT INTO `user` (Name, Email, Hash, Salt, Permissi
                                        VALUES (:name, :email, :hash, :salt, :permissions)');
 $statement->execute(array(':name' => $username, ':email' => $email, ':hash' => $hash, ':salt' => $salt, ':permissions' => $permissions));
 
- /*
- function randString($length = 16) {
-    $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#%^&*_+|';
-    $string = '';
-
-    for ($i = 0; $i < $length; $i++) {
-        $string .= $chars[mt_rand(0, strlen($chars) - 1)];
-    }
-
-    return $string;
-}
-*/
 
 ?>
