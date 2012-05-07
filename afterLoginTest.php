@@ -13,5 +13,5 @@
 			$e=$_SESSION['uEmail'];
 			$br=" || ";
  echo $a.$br.$b.$br.$c.$br.$d.$br.$e;
- session_destroy();
+
  ?>

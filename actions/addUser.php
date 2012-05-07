@@ -8,7 +8,7 @@
  */
 
  require_once "../uD_config.php";//load settings
- 
+ require_once "./act.php";
  $username		= $_POST['user'];
  $pword			= $_POST['pword'];
  $pwordverify	= $_POST['pwordv'];//comes from the verify password field (should be checked before sending it here but just to be safe)
@@ -22,13 +22,11 @@ if(!isset($_POST['lvl'])){//if not set default to config
 if($pword != $pwordverify) {echo "passwords not equal"; die();}
 
 //create salt
-$salt=randString();
+$salt=act::randString(16);
 //hash
 $hash=hash("sha256",$pword.$salt,true);
 //send
 echo $username.'<br>';
-echo $pword.'<br>';
-echo $pwordverify.'<br>';
 echo $salt.'<br>';
 echo $hash.'<br>';
 
@@ -42,7 +40,7 @@ $statement = $db->prepare('INSERT INTO `user` (Name, Email, Hash, Salt, Permissi
                                        VALUES (:name, :email, :hash, :salt, :permissions)');
 $statement->execute(array(':name' => $username, ':email' => $email, ':hash' => $hash, ':salt' => $salt, ':permissions' => $permissions));
 
- 
+ /*
  function randString($length = 16) {
     $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#%^&*_+|';
     $string = '';
@@ -53,6 +51,6 @@ $statement->execute(array(':name' => $username, ':email' => $email, ':hash' => $
 
     return $string;
 }
-
+*/
 
 ?>
