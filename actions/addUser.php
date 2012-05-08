@@ -40,5 +40,5 @@ $statement = $db->prepare('INSERT INTO `user` (Name, Email, Hash, Salt, Permissi
                                        VALUES (:name, :email, :hash, :salt, :permissions)');
 $statement->execute(array(':name' => $username, ':email' => $email, ':hash' => $hash, ':salt' => $salt, ':permissions' => $permissions));
 
-
+echo "user added<br>";
 ?>

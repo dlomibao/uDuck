@@ -38,6 +38,15 @@
 
     return $string;
 	}
+	public static function showSessionData(){
+		 	$a=$_SESSION['uID'];
+			$b=$_SESSION['uLvl'];
+			$c=$_SESSION['uName'];
+			$d=$_SESSION['uCreated'];
+			$e=$_SESSION['uEmail'];
+			$br=" || ";
+ 		echo $a.$br.$b.$br.$c.$br.$d.$br.$e.'<br';
+	}
 
  } 
  ?>

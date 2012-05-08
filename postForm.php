@@ -27,7 +27,7 @@
 		Group		<input type="text" name="GroupID" /><br>
 		Category	<input type="text" name="CatID" /><br>
 		Tags		<input type="text" name="Tags"/><br>
-		Visible		<input type="checkbox" name="Visible" /><br>
+		Visible		<input type="checkbox" value=1 name="Visible" /><br>
 	
 	
 	
