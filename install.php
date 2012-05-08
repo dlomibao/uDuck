@@ -119,7 +119,7 @@ require_once 'uD_config.php';//loads configuration
 						  `Hash` binary(32) NOT NULL,
 						  `Salt` char(16) NOT NULL,
 						  `Created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-						  `Permissions` tinyint(1) NOT NULL DEFAULT '1',
+						  `Permissions` tinyint(1) unsigned NOT NULL DEFAULT '1',
 						  PRIMARY KEY (`ID`),
 						  UNIQUE KEY `Name` (`Name`),
 						  UNIQUE KEY `Email` (`Email`)
