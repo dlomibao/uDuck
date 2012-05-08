@@ -22,5 +22,5 @@ $statement = $db->prepare('INSERT INTO `group` (Name, Caption, Thumb, CatID)
 $statement->execute(array(':name' => $name, ':caption' => $caption,':thumb' => $thumb, ':cid' => $cid));
 
  
- 
+ echo "group added<br>";
  ?>

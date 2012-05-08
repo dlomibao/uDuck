@@ -43,5 +43,5 @@
  				      ':thumb'=>$thumb,':gid'=>$gid  ,':cid'=>$cid  ,':tags'=>$tags,':vis'=>$vis)
 					);
 
-
+ echo "post added<br>";
  ?>
