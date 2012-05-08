@@ -6,6 +6,7 @@
  * 		use pdo to grab group and category drop down list
  * 		check for permission to pick an Author other than self (drop down?)
  * 		check for permission to publish(make visible)
+ * 		call add vs update based on what the GET data says
  */
 ?>
 
@@ -16,7 +17,7 @@
 </head>
 <body>
 	
-	<form action='actions/updatePost.php' method='post'>
+	<form action='actions/addPost.php' method='post'>
 		ID			<input type="text" name="id" /><br>
 		Title		<input type="text" name="Title"/><br>
 		Author		<input type="text" name="Author"/><br>
