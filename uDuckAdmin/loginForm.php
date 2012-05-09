@@ -11,10 +11,6 @@
 	<button type='submit'>Send</button>
 	<button type='reset'>Reset</button>
 	</form>
-	
-
-		
-		
-		
+			
 </body>
 </html>	
