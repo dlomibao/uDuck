@@ -4,7 +4,7 @@
  */
  chdir(dirname(__FILE__));
  require_once "../uD_config.php";
- class act{
+ class Act{
  	/** checks to make sure user is of valid permission level
 	 *  requires sesssion_start()
 	 * @param minimum level 		integer up to 255

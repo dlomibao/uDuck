@@ -4,7 +4,7 @@
  * updates a post if it exists, adds it if it doesn't
  */
  //require_once "../uD_config.php";//load settings		safe to remove since act is required;
- require_once "./act.php";
+ require_once "./Act.php";
  session_start();
  if(!act::checkLvl(1)){die();}//check if user level is high enough to post anything
 

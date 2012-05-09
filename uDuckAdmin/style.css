@@ -6,6 +6,7 @@ body{
 	width:960px;
 	margin: 0 auto;
 	background-color:#ddddff;
+	overflow: hidden;
 }
 
 
@@ -27,10 +28,33 @@ body{
 	float:right;
 }
 
+
 #sidebardiv{
 	min-height:500px;
 	height:200%;
 	width:150px;
 	float:left;
 	background-color:#ccccFF;
+	
+}
+.sidebarmenu{
+	list-style-type: none;
+	padding: 10px;
+	font-family:sans-serif;
+	
+}
+.sans{
+	font-family:sans-serif;
+}
+
+	
+
+.cp_body{
+	background-color:#ddddff;
+	min-height:500px;
+	width:780px;
+	margin:0;
+	padding: 15px 0 0 0;
+	float:right;
+	display: block;
 }

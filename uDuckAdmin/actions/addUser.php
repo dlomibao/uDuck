@@ -8,7 +8,7 @@
  */
 
  require_once "../uD_config.php";//load settings
- require_once "./act.php";
+ require_once "./Act.php";
  $username		= $_POST['user'];
  $pword			= $_POST['pword'];
  $pwordverify	= $_POST['pwordv'];//comes from the verify password field (should be checked before sending it here but just to be safe)

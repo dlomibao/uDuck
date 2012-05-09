@@ -4,7 +4,7 @@
  * adds a group to the group table
  */
  session_start();
- require_once "./act.php";
+ require_once "./Act.php";
  if(!act::checkLvl(10)){die();}//figure out what it should really be
  $name    = $_POST['name'];
  $caption = $_POST['caption'];
