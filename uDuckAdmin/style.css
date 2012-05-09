@@ -1,0 +1,36 @@
+
+body{
+	background-color:#808080;
+}
+#wrapper{
+	width:960px;
+	margin: 0 auto;
+	background-color:#ddddff;
+}
+
+
+#headerdiv{
+	clear:both;
+	height:100px;
+	background-color:#bbbbff;
+	padding:5px;
+}
+#headerlogo{float:left;}
+#headertitle{
+	float:left;
+	margin-bottom:0;
+	margin-top:0;
+}
+#headerlogout{
+	margin-top:10px;
+	margin-right:20px;
+	float:right;
+}
+
+#sidebardiv{
+	min-height:500px;
+	height:200%;
+	width:150px;
+	float:left;
+	background-color:#ccccFF;
+}

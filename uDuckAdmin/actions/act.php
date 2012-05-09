@@ -2,7 +2,8 @@
 /** common functions for actions group
  * 
  */
- require_once"../uD_config.php";
+ chdir(dirname(__FILE__));
+ require_once "../uD_config.php";
  class act{
  	/** checks to make sure user is of valid permission level
 	 *  requires sesssion_start()
