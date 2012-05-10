@@ -1,5 +1,5 @@
 <?php 
-/** uDuck installation
+/** uDuck Database Installation
  * 
  * requires php5.3
  * requires MySQL 5.1
@@ -34,8 +34,8 @@ require_once 'uD_config.php';//loads configuration
 			
 			 echo "host: $host <br>";
 			 //query if database exists
-			 $check=$dbh->query("SELECT 1 FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$db';")->fetchAll();
-			 $db_exists=$check[0];//need to fix for when there isn't anything in the information_chema.Schemata
+			 $check=$dbh->query("SELECT 1 FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$db';")->fetch();
+			 $db_exists= !empty($check);//need to fix for when there isn't anything in the information_chema.Schemata
 	
 			if( !$db_exists)
 			{
@@ -75,7 +75,7 @@ require_once 'uD_config.php';//loads configuration
 						  `Cat` varchar(255) NOT NULL,
 						  `GroupName` varchar(126) NOT NULL COMMENT 'this is what groups are called in this category',
 						  PRIMARY KEY (`ID`)
-						) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+						) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 						
 						CREATE TABLE IF NOT EXISTS `Group` (
@@ -87,7 +87,7 @@ require_once 'uD_config.php';//loads configuration
 						  PRIMARY KEY (`ID`),
 						  KEY `CatID` (`CatID`)
 						  
-						) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+						) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 						
 
 						
@@ -108,7 +108,7 @@ require_once 'uD_config.php';//loads configuration
 						  KEY `Author` (`Author`),
 						  KEY `GroupID` (`GroupID`),
 						  KEY `CatID` (`CatID`)
-						) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+						) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 						
 
 						
@@ -123,7 +123,7 @@ require_once 'uD_config.php';//loads configuration
 						  PRIMARY KEY (`ID`),
 						  UNIQUE KEY `Name` (`Name`),
 						  UNIQUE KEY `Email` (`Email`)
-						) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+						) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 						
 
 						");

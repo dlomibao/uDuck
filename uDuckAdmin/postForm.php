@@ -8,34 +8,66 @@
  * 		check for permission to publish(make visible)
  * 		call add vs update based on what the GET data says
  */
+require_once "./cp_header.php";
 ?>
-
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-	<title>uDuck Post Form</title>
-</head>
-<body>
-	
+<div class="cp_body" id="postForm">
+	<h1>uDuck Post Form</h1>
 	<form action='actions/addPost.php' method='post'>
-		ID			<input type="text" name="id" /><br>
-		Title		<input type="text" name="Title"/><br>
-		Author		<input type="text" name="Author"/><br>
-		Body		<input type="text" name="Body" /><br>
-		Caption		<input type="text" name="Caption" /><br>
-		ThumbnailURL<input type="text" name="Thumb" /><br>
-		Group		<input type="text" name="GroupID" /><br>
-		Category	<input type="text" name="CatID" /><br>
-		Tags		<input type="text" name="Tags"/><br>
-		Visible		<input type="checkbox" value=1 name="Visible" /><br>
-	
+		<table>
+		<tr>
+			<td>ID</td>
+			<td><input type="text" name="id" /></td>
+		</tr>
+		<tr>
+			<td>Title</td>
+			<td><input type="text" name="Title" /></td>
+		</tr>
+		<tr>
+			<td>Author</td>
+			<td><input type="text" name="Author"/>
+		</tr>
+		
+		<tr>
+			<td>Body</td>
+			<td><input type="text" name="Body" />
+		</tr>
+		
+		<tr>
+			<td>Caption</td>
+			<td><input type="text" name="Caption" />
+		</tr>
+		
+		<tr>
+			<td>Thumbnail URL</td>
+			<td><input type="text" name="Thumb" />
+		</tr>
+		
+		<tr>
+			<td>Group ID</td>
+			<td><input type="text" name="GroupID" />
+		</tr>
+		
+		<tr>
+			<td>Cat ID</td>
+			<td><input type="text" name="CatID" />
+		</tr>
+		
+		<tr>
+			<td>Tags</td>
+			<td><input type="text" name="Tags"/>
+		</tr>
+		
+		<tr>
+			<td>Visible</td>
+			<td><input type="checkbox" value=1 name="Visible" /><br>
+		</table>
 	
 	
 	<button type='submit'>Send</button>
 	<button type='reset'>Reset</button>
 	</form>
-	
-
+</div>
+<?php	require_once "./cp_footer.php"; ?>
 		
 		
 		

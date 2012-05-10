@@ -1,8 +1,8 @@
 <?php
-/** common functions for actions group
- * 
+/** 
+ *  the Act class has a variety of methods to be used by the actions group
  */
- chdir(dirname(__FILE__));
+ chdir(dirname(__FILE__));//when included or required in other directories
  require_once "../uD_config.php";
  class Act{
  	/** checks to make sure user is of valid permission level

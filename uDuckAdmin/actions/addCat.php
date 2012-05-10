@@ -4,7 +4,6 @@
  * adds a category to the category table
  */
  session_start();
- //require_once "../uD_config.php";//load settings
  require_once "./Act.php";
  if(!act::checkLvl(10)){die();}//figure out what it should really be
  $cat   = $_POST['cat'];
