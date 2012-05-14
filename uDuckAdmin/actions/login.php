@@ -30,6 +30,7 @@
 			$_SESSION['uCreated']=$userdata['Created'];
 			$_SESSION['uEmail']=$userdata['Email'];
 			echo "login correct<br>";
+			echo "<a href='redirect.php'>go back to original page</a>";
 			
 	}else{echo "incorrect login<br>";}
 	

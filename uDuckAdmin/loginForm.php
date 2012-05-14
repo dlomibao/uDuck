@@ -1,9 +1,12 @@
 <?php
+	
 	if($_SERVER["HTTPS"] != "on") {//make sure to page uses https
 	   header("HTTP/1.1 301 Moved Permanently");
 	   header("Location: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
 	   exit();
 	}
+	session_start();
+	echo $_SESSION['origin'];
 	
 ?>
 <!DOCTYPE html>

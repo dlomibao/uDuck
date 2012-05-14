@@ -9,6 +9,7 @@
 	//require_once "uD_config.php";
 	require_once "adminAct.php";
 	if(!isset($_SESSION['uID'])){//if you aren't logged in go to login page
+		$_SESSION['origin']=$_SERVER['SCRIPT_NAME'];// store current page for redirect back later
 		/* Redirect browser */
 		header("Location: ./loginForm.php");
 		exit;	

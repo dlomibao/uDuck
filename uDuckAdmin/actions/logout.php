@@ -5,6 +5,9 @@
  * 
  */
 session_start();
-session_destroy();
-echo "logged out<br>";
+if(session_destroy()){
+	echo "logged out<br>";
+}else{
+	echo "error logging out";
+}
 ?>

@@ -1,9 +1,16 @@
-This is uDuck CMS
-=================
+uDuck Content Management System
+===============================
 Created By Derek Lomibao
-As of right now, let's just say it falls under the MIT license.
+MIT license.
 
-right now there isn't much to show
+uDuck is intended to be a simple content management system for web developers.
+It doesn't come with fancy templates.
+It is supposed to be small and quick.
+It makes it easy to turn static layouts into dynamic pages.
+It makes it easy to add content.
+
+
+
 
 
 
