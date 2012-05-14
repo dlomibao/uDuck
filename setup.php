@@ -51,6 +51,9 @@ else{ ?>
 				<tr><td colspan="2"><h3>uDuck Default Category</h3></td></tr>
 				<tr><td>Category Name        </td><td><input type='text' value='Portfolio'    name='catname'></td><td><pre>    Each post is required to hava a category e.g. Blog, Portfolio, etc.</pre></td></tr>
 				<tr><td>Category's Group Name</td><td><input type='text' value='Project'      name='gname'></td><td><pre>    Each category can have groups of posts that are related e.g. Category, Project, etc.</pre></td></tr>
+				<tr><td colspan="2"><h3>Security and Encryption</h3></td></tr>
+				<tr><td>Use HTTPS?</td><td><input type=checkbox value='1' name='secure'></td><td><pre>    It is recommended to use https when logging in and posting to keep your data secure.</pre><td></td></tr>
+				<tr><td colspan="3"><pre>If you use https without an ssl certificate your browser will issue a warning.You will need to select proceed anyway. Your data will still be encrypted but it is possible for a man in the middle attack</pre></td></tr>
 			</table>
 			<button type='submit' style="width:220px; height:80px;"><h3>Install uDuck</h3></button>
 			<button type='reset' style="width:100px; height:70px;"><h3>Reset</h3></button>
