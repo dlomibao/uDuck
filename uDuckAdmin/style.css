@@ -23,9 +23,13 @@ body{
 	margin-top:0;
 }
 #headerlogout{
-	margin-top:10px;
-	margin-right:20px;
+	
 	float:right;
+}
+#headeruserbox{
+	float:right;
+	/*margin-top:10px;
+	margin-right:20px;*/
 }
 
 
@@ -43,10 +47,22 @@ body{
 	font-family:sans-serif;
 	
 }
+
 .sans{
 	font-family:sans-serif;
 }
-
+.fleft{
+	float:left;
+}
+.fright{
+	float:right;
+}
+ul{
+	list-style-type: none; padding: 5px;
+}
+li ul{
+	background-color:#BBBBFF;
+}
 	
 
 .cp_body{
