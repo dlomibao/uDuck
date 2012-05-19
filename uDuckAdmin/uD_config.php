@@ -9,7 +9,10 @@
  define('DB_ROOTPASS'		,'');
  
  define('DB_USER'			,'uduser');
- define('DB_USERPASS'		,'udpass'); 
+ define('DB_USERPASS'		,'udpass');
+ 
+ define('DB_USER_RO'        ,'udreadonly');//READ ONLY USER
+ define('DB_USERPASS_RO'    ,'udreadonlypass'); 
 
  define('DB_NAME'			,'ud_db');
  
