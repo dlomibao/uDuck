@@ -12,8 +12,9 @@ class UDuck {
 	private $USER = DB_USER_RO;
 	private $PASS = DB_USERPASS_RO;
 	
-	public $con;
-	public  $posts;
+	public $con;//the connection object (TODO: make private for production code )
+	public $posts;//holds the last accessed group of posts as an array of arrays
+	public $apost;//holds the last accessed post as an array
 	/**
 	 * @param $USER		STRING	The user to connect to the database
 	 * @param $PASS		STRING	user password
@@ -55,24 +56,83 @@ class UDuck {
 	public function getAllPosts(){
 		$this->posts  = $this->con->query("SELECT * FROM `post` WHERE Visible=1")->fetchAll();
 		return $this->posts;
-		/*foreach($result as $row){
-			$this->val[]=$row;
-		}*/
 	}
+	/**returns an array of the first post that matches the id
+	 * (there shouldn't be any other since ID is a primary key)
+	 */
 	public function getPostByID($id){
-		$this->posts  = $this->con->query("SELECT * FROM `post` WHERE Visible=1 and ID=$id");
+		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Visible=1 and ID=:id");
+		$prep->execute(array(':id'=>$id));
+		$this->apost = $prep->fetch();
+		$prep->closeCursor();
+		return $this->apost;
+	}
+	/**returns an array of the first post that matches the title
+	 * (might be usefull for permalinks)
+	 */
+	public function getPostByTitle($title){
+		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Visible=1 and Title=:title");
+		$prep->execute(array(':title'=>$title));
+		$this->apost = $prep->fetch();
+		$prep->closeCursor();
+		return $this->apost;
+	}
+	public function getAllPostsByAuthor($auth){
+		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Visible=1 and Author=:auth");
+		$prep->execute(array(':auth'=>$auth));
+		$this->posts = $prep->fetchAll();
+		
 		return $this->posts;
 		
 	}
-	public function getPostByTitle(){
+	public function getAllPostsByCatID($cat){
+		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Visible=1 and CatID=:cat");
+		$prep->execute(array(':cat'=>$cat));
+		$this->posts = $prep->fetchAll();
+		
+		return $this->posts;
 		
 	}
-	public function getPostByAuthor(){
+	public function getAllPostsByGroupID($group){
+		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Visible=1 and GroupID=:group");
+		$prep->execute(array(':group'=>$group));
+		$this->posts = $prep->fetchAll();
+		
+		return $this->apost;
 		
 	}
-	public function getPost($by){}
-	
+	public function getUserByID($id){
+		$prep=$this->con->prepare("SELECT * FROM `user` WHERE ID=:id");
+		$prep->execute(array(':id'=>$id));
+		return $prep->fetch();
+		
+	}
+	public function getUserByName($name){
+		$prep=$this->con->prepare("SELECT * FROM `user` WHERE Name=:name");
+		$prep->execute(array(':name'=>$name));
+		return $prep->fetch();
+		
+	}
+	public function getCategoryByID($id){
+		$prep=$this->con->prepare("SELECT * FROM `categories` WHERE ID=:id");
+		$prep->execute(array(':id'=>$id));
+		return $prep->fetch();
+	}
+	public function getGroupsByCatID($id){
+		$prep=$this->con->prepare("SELECT * FROM `group` WHERE CatID=:id");
+		$prep->execute(array(':id'=>$id));
+		return $prep->fetchAll();
+	}
 
+	public function getGroupByID($id){
+		$prep=$this->con->prepare("SELECT * FROM `group` WHERE ID=:id");
+		$prep->execute(array(':id'=>$id));
+		return $prep->fetch();
+	}
+	
+	
+	
+	
 }
 
 ?>
