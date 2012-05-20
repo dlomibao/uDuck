@@ -27,6 +27,9 @@ require_once 'uD_config.php';//loads configuration
 
 	$user=DB_USER;
 	$pass=DB_USERPASS;
+	$userro=DB_USER_RO;
+	$passro=DB_USERPASS_RO;
+	
 	$db=DB_NAME; 
 
     try {
@@ -56,7 +59,12 @@ require_once 'uD_config.php';//loads configuration
 			$dbh->exec("CREATE USER `$user`@`$host` IDENTIFIED BY '$pass';
 							GRANT ALL ON $db.* TO `$user`@`$host` WITH GRANT OPTION;
 							FLUSH PRIVILEGES;") ;
-			$dbh=null;//close connection
+			//$dbh->closeCursor();//close connection?
+			//$dbh=null;
+			$dbh->exec("CREATE USER `$userro`@`$host` IDENTIFIED BY '$passro';
+							GRANT SELECT ON $db.* TO `$userro`@`$host`;
+							FLUSH PRIVILEGES;");
+							$dbh=null;
 		}
 	 catch (PDOException $e){
         die(" Problem Creating Database and User: ". $e->getMessage());

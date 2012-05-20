@@ -39,6 +39,9 @@
 
     return $string;
 	}
+	/**shows the user data from the session
+	 * (Depreciated)
+	 */
 	public static function showSessionData(){
 		 	$a=$_SESSION['uID'];
 			$b=$_SESSION['uLvl'];
@@ -47,6 +50,41 @@
 			$e=$_SESSION['uEmail'];
 			$br=" || ";
  		echo $a.$br.$b.$br.$c.$br.$d.$br.$e.'<br';
+	}
+	
+	/**
+	 * 
+	 */
+	public static function listFromTable($tableName='post',$showArray=array('ID','Title','Author'),$start=0,$end=30){
+		$html='';
+		$host=DB_HOST;
+		$dbuser=DB_USER;
+		$dbpass=DB_USERPASS;
+		$db=DB_NAME; 
+		
+		$db = new PDO("mysql:host=$host;dbname=$db", $dbuser, $dbpass);
+		$statement = $db->prepare("SELECT * FROM $tableName LIMIT $start , $end");
+								   //
+		$statement->execute();
+		$data=$statement->fetchAll(); 
+	
+		
+		
+		$html .= '<table><tr>';
+		foreach($showArray as $e){
+			$html .= '<td>'. $e .'</td>';
+		}
+		$html .= '</tr>';
+		
+		foreach($data as $row){
+			$html .= '<tr>';
+			foreach($showArray as $f){
+				$html .= '<td>'. $row[$f] .'</td>';
+			}
+			$html .= '</tr>';
+		}
+		$html .= '</table>';
+		return $html;
 	}
 
  } 
