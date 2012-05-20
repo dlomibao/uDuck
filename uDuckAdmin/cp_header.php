@@ -29,14 +29,28 @@
 		<img src="img/uDuckLogo.png" alt="a" height="100" width="100" id="headerlogo" />
 		<span>It may be ugly, but if it works...</span><br>
 		<H1 id="headertitle">uDuck Content Management System<br></H1>
-		<a href="actions/logout.php" id="headerlogout" class="sans">logout</a>
-		
+		<div id="headeruserbox" class='sans fright'>
+			<span >Hello, <?php echo $_SESSION['uName']; ?></span><br>
+			<a href="actions/logout.php" id="headerlogout" >logout</a>
+		</div>
 	</div><!--end header div-->
 	<div id=sidebardiv>
-		<ul style="list-style-type: none; padding: 10px;">
-			<li class="sans"><a href="test.php">Create Post</a></li>
-			<li class="sans"><a href="test.php">Create Category</a></li>
-			<li class="sans"><a href="test.php">Create Group</a></li>
+		<ul  class='sans'>
+			<li><a href="test.php">Post</a>
+				<ul><li>add new post</li>
+					<li>edit/delete post</li>
+				</ul>
+			</li>
+			<li><a href="test.php">Group</a>
+				<ul><li>add new group</li>
+					<li>edit/delete group</li>
+				</ul>
+			</li>
+			<li><a href="test.php">Category</a>
+				<ul><li>add new category</li>
+					<li>edit/delete category</li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 	
