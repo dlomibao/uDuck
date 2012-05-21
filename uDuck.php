@@ -15,6 +15,8 @@ class UDuck {
 	public $con;//the connection object (TODO: make private for production code )
 	public $posts;//holds the last accessed group of posts as an array of arrays
 	public $apost;//holds the last accessed post as an array
+	
+	
 	/**
 	 * @param $USER		STRING	The user to connect to the database
 	 * @param $PASS		STRING	user password
@@ -101,6 +103,11 @@ class UDuck {
 		return $this->apost;
 		
 	}
+	
+	//--User Accessors--///////////////////////////////////
+	public function getAllUsers(){
+		return $this->con->query("SELECT * FROM `user`")->fetchAll();
+	}
 	public function getUserByID($id){
 		$prep=$this->con->prepare("SELECT * FROM `user` WHERE ID=:id");
 		$prep->execute(array(':id'=>$id));
@@ -113,11 +120,18 @@ class UDuck {
 		return $prep->fetch();
 		
 	}
+	
+	//--Category Accessors--///////////////////////////////////////////////////
+	public function getAllCategories(){
+		return $this->con->query("SELECT * FROM `categories`")->fetchAll();
+	}
 	public function getCategoryByID($id){
 		$prep=$this->con->prepare("SELECT * FROM `categories` WHERE ID=:id");
 		$prep->execute(array(':id'=>$id));
 		return $prep->fetch();
 	}
+	
+	//--Group Accessors--//////////////////////////////////////////////////////
 	public function getGroupsByCatID($id){
 		$prep=$this->con->prepare("SELECT * FROM `group` WHERE CatID=:id");
 		$prep->execute(array(':id'=>$id));
