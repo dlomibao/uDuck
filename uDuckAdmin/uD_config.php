@@ -17,5 +17,6 @@
  define('DB_NAME'			,'ud_db');
  
  define('DEFAULT_USERLVL'	,1);
+ define('USEHTTPS'          ,FALSE);//set to 0 to not use https
 
 ?>

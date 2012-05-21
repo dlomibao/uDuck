@@ -1,13 +1,20 @@
 <?php
-	if($_SERVER["HTTPS"] != "on") {//make sure to page uses https
+	//require_once "uD_config.php";
+
+
+	session_start();
+	//require_once "uD_config.php";
+	require_once "adminAct.php";
+	$usehttps=USEHTTPS;
+	if($usehttps && isset($_SERVER["HTTPS"])){
+		header('Strict-Transport-Security: max-age=500');
+	} elseif ($usehttps && !isset($_SERVER['HTTPS'])){//make sure to page uses https
 	   header("HTTP/1.1 301 Moved Permanently");
 	   header("Location: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
 	   exit();
 	}
 
-	session_start();
-	//require_once "uD_config.php";
-	require_once "adminAct.php";
+	
 	if(!isset($_SESSION['uID'])){//if you aren't logged in go to login page
 		$_SESSION['origin']=$_SERVER['SCRIPT_NAME'];// store current page for redirect back later
 		/* Redirect browser */
