@@ -37,7 +37,7 @@
  $db=DB_NAME; 
 
  $db = new PDO("mysql:host=$host;dbname=$db", $dbuser, $dbpass);
- $statement = $db->prepare('INSERT INTO `post` (Title, Author, Body,Caption,Thumb,GroupID,CatID,Tags,Created,Modified,Visible)
+ $statement = $db->prepare('INSERT INTO `Post` (Title, Author, Body,Caption,Thumb,GroupID,CatID,Tags,Created,Modified,Visible)
                                        VALUES (:title, :auth,:body,:capt,:thumb,:gid,:cid,:tags,NOW(),NOW(),:vis)');
  $statement->execute(
  				array(':title'=>$title,':auth'=>$auth,':body'=>$body,':capt'=>$capt,

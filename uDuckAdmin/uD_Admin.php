@@ -1,12 +1,12 @@
 <?php
-require_once "uDuckAdmin/uD_config.php";
+require_once "uD_config.php";
 
 /**
- * the uDuck accessor class
+ * the uDuck admin class
  * this will allow people to get data from the MySQL database
  * 
  */
-class UDuck {
+class uDuck_Admin {
 	private $HOST = DB_HOST;
 	private $DB   = DB_NAME;
 	private $USER = DB_USER_RO;
@@ -132,6 +132,9 @@ class UDuck {
 	}
 	
 	//--Group Accessors--//////////////////////////////////////////////////////
+	public function getAllGroups(){
+		return $this->con->query("SELECT * FROM `Group`")->fetchAll();
+	}
 	public function getGroupsByCatID($id){
 		$prep=$this->con->prepare("SELECT * FROM `Group` WHERE CatID=:id");
 		$prep->execute(array(':id'=>$id));
@@ -143,8 +146,43 @@ class UDuck {
 		$prep->execute(array(':id'=>$id));
 		return $prep->fetch();
 	}
-	
-	
+	//--uDuck drop menu-//////////////////////
+	public function dropMenuUser($name="UserID",$print=TRUE){
+		$html="<select name=$name style='min-width:11.7em;'>";
+		$users=$this->getAllUsers();
+		foreach($users as $u){
+			$id=$u['ID'];
+			$name=$u['Name'];
+			$html .= "<option value='$id'>$name</option>";
+		}
+		$html .= "</select>";
+		if($print){echo $html;}
+		return $html;
+	}
+	public function dropMenuCat($name="CatID",$print=TRUE){
+		$html="<select name=$name style='min-width:11.7em;'>";
+		$cats=$this->getAllCategories();
+		foreach($cats as $c){
+			$id=$c['ID'];
+			$name=$c['Cat'];
+			$html .= "<option value='$id'>$name</option>";
+		}
+		$html .= "</select>";
+		if($print){echo $html;}
+		return $html;
+	}
+	public function dropMenuGroup($name="GroupID",$print=TRUE){
+		$html="<select name=$name style='min-width:11.7em;'><option value=''></option>";
+		$groups=$this->getAllGroups();
+		foreach($groups as $g){
+			$id=$g['ID'];
+			$name=$g['Name'];
+			$html .= "<option value='$id'>$name</option>";
+		}
+		$html .= "</select>";
+		if($print){echo $html;}
+		return $html;
+	}
 	
 	
 }

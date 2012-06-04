@@ -17,7 +17,7 @@ $dbpass=DB_USERPASS;
 $db=DB_NAME; 
 
 $db = new PDO("mysql:host=$host;dbname=$db", $dbuser, $dbpass);
-$statement = $db->prepare('INSERT INTO `group` (Name, Caption, Thumb, CatID)
+$statement = $db->prepare('INSERT INTO `Group` (Name, Caption, Thumb, CatID)
                                         VALUES (:name,:caption,:thumb,:cid)');
 $statement->execute(array(':name' => $name, ':caption' => $caption,':thumb' => $thumb, ':cid' => $cid));
 

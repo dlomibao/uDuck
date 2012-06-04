@@ -1,4 +1,4 @@
-
+/*uDuckAdmin CSS code*/
 body{
 	background-color:#808080;
 }
@@ -34,7 +34,7 @@ body{
 
 
 #sidebardiv{
-	min-height:500px;
+	min-height:700px;
 	height:200%;
 	width:150px;
 	float:left;
@@ -73,4 +73,8 @@ li ul{
 	padding: 15px 0 0 0;
 	float:right;
 	display: block;
+}
+.greyedout{
+	color:grey;
+	
 }

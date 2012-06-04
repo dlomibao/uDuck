@@ -9,10 +9,11 @@ It is supposed to be small and quick.
 It makes it easy to turn static layouts into dynamic pages.
 It makes it easy to add content.
 
-
+Now uses nicedit for post forms!
 
 right now, use the install.php script in the uDuckAdmin folder to install. be sure to edit the uD_config.php file before using.
-(eventually, the setup.php will handle setup in a more user friendly manner )
+(eventually, the setup.php will handle setup in a more user friendly manner ) if you are using shared hosting or have limited 
+mysql privileges, you may need to create the users and db manually, then run the install script again to add the tables
 
 uDuck is split into admin/backend and frontend acessor class 
 
