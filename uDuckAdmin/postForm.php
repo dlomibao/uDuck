@@ -14,11 +14,12 @@ $admin= new uDuck_Admin();
 if(isset($_GET['ID']) ){
 	$postvalue=$_GET['ID'];
 	$p=$admin->getPostByID($postvalue);
+	//print_r($p);
 }else{
 	$postvalue='';
-	$p=array('Title'=>'');
+	$p=Array ( 'Title' => '','Author'=>'','Body' => 'Enter Post Body Here.','Caption' => '','Thumb' => '','GroupID'=>'','CatID'=>'','Tags' => '','Visible'=>'1');
+	
 }
-//$p=  array('Name' => '');
 ?>
 
 
@@ -36,28 +37,28 @@ if(isset($_GET['ID']) ){
 		<table>
 			<tr>
 				<td>Author: </td>
-				<td><?php $admin->dropMenuUser("Author"); ?><!--<input type="text" name="Author"/>--></td>
+				<td><?php $admin->dropMenuUser("Author",$p['Author']); ?><!--<input type="text" name="Author"/>--></td>
 				<td>Category: </td>
-				<td><?php $admin->dropMenuCat("CatID"); ?></td>
+				<td><?php $admin->dropMenuCat("CatID",$p['CatID']); ?></td>
 				<td>Group: </td>
-				<td><?php $admin->dropMenuGroup("GroupID"); ?></td>
+				<td><?php $admin->dropMenuGroup("GroupID",$p['GroupID']); ?></td>
 			</tr>
 		</table>
-		<input type="text" name="Title" placeholder="Enter Title Here" title="title" value="<?php echo $p['Title']; ?>" style="width:90%;"/>
-		<input type="text" name="Caption" placeholder="Caption" style="width:90%;"/>
+		<input type="text" name="Title"   placeholder="Enter Title Here" title="Title"   value="<?php echo $p['Title']; ?>" style="width:90%;"/>
+		<input type="text" name="Caption" placeholder="Caption"          title="Caption" value="<?php echo $p['Caption']; ?>" style="width:90%;"/>
 	
 <!--////////////////////////////////////////////////////-->
-		<textarea name="Body" placeholder="Enter Post Body Here." style="width: 90%;" rows="15">Enter Post Body Here.</textarea>
+		<textarea name="Body" placeholder="Enter Post Body Here." style="width: 90%;" rows="15"><?php echo $p['Body'];?></textarea>
 		<table>
 			<td>Thumbnail URL: </td>
-			<td colspan="3"><input type="text" name="Thumb" size="90" placeholder="http://" /></td>
+			<td colspan="3"><input type="text" name="Thumb" value='<?php echo $p['Thumb']; ?>' size="90" placeholder="http://" /></td>
 		<tr>
 			<td>Tags: </td>
-			<td colspan="3"><input type="text" name="Tags" size="90"/></td>
+			<td colspan="3"><input type="text" name="Tags" value='<?php echo $p['Tags']; ?>' size="90"/></td>
 		</tr>
 		
 		<tr>
-			<td>Visible: <input type="checkbox" value=1 name="Visible" /></td>
+			<td>Visible: <input type="checkbox" value=1 name="Visible" <?php if($p['Visible']>0){echo "checked";}?>/></td>
 			<td>ID: <input type="text" name="id" readonly="readonly" size="5" value='<?php echo $postvalue; ?>' placeholder="New Post" class="greyedout"/></td>
 		</tr>
 		</table>

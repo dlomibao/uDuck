@@ -56,14 +56,14 @@ class uDuck_Admin {
 		$this->con=null;
 	}
 	public function getAllPosts(){
-		$this->posts  = $this->con->query("SELECT * FROM `post` WHERE Visible=1")->fetchAll();
+		$this->posts  = $this->con->query("SELECT * FROM `post`")->fetchAll();
 		return $this->posts;
 	}
 	/**returns an array of the first post that matches the id
 	 * (there shouldn't be any other since ID is a primary key)
 	 */
 	public function getPostByID($id){
-		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Visible=1 and ID=:id");
+		$prep=$this->con->prepare("SELECT * FROM `post` WHERE ID=:id");
 		$prep->execute(array(':id'=>$id));
 		$this->apost = $prep->fetch();
 		$prep->closeCursor();
@@ -73,14 +73,14 @@ class uDuck_Admin {
 	 * (might be usefull for permalinks)
 	 */
 	public function getPostByTitle($title){
-		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Visible=1 and Title=:title");
+		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Title=:title");
 		$prep->execute(array(':title'=>$title));
 		$this->apost = $prep->fetch();
 		$prep->closeCursor();
 		return $this->apost;
 	}
 	public function getAllPostsByAuthor($auth){
-		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Visible=1 and Author=:auth");
+		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Author=:auth");
 		$prep->execute(array(':auth'=>$auth));
 		$this->posts = $prep->fetchAll();
 		
@@ -88,7 +88,7 @@ class uDuck_Admin {
 		
 	}
 	public function getAllPostsByCatID($cat){
-		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Visible=1 and CatID=:cat");
+		$prep=$this->con->prepare("SELECT * FROM `post` WHERE CatID=:cat");
 		$prep->execute(array(':cat'=>$cat));
 		$this->posts = $prep->fetchAll();
 		
@@ -96,7 +96,7 @@ class uDuck_Admin {
 		
 	}
 	public function getAllPostsByGroupID($group){
-		$prep=$this->con->prepare("SELECT * FROM `Post` WHERE Visible=1 and GroupID=:group");
+		$prep=$this->con->prepare("SELECT * FROM `Post` WHERE GroupID=:group");
 		$prep->execute(array(':group'=>$group));
 		$this->posts = $prep->fetchAll();
 		
@@ -147,37 +147,43 @@ class uDuck_Admin {
 		return $prep->fetch();
 	}
 	//--uDuck drop menu-//////////////////////
-	public function dropMenuUser($name="UserID",$print=TRUE){
+	public function dropMenuUser($name="UserID",$default=0,$print=TRUE){
 		$html="<select name=$name style='min-width:11.7em;'>";
 		$users=$this->getAllUsers();
 		foreach($users as $u){
 			$id=$u['ID'];
 			$name=$u['Name'];
-			$html .= "<option value='$id'>$name</option>";
+			$html .= "<option value='$id'";
+			if($default==$id){$html .= " selected='selected' ";}
+			$html .=">$name</option>";
 		}
 		$html .= "</select>";
 		if($print){echo $html;}
 		return $html;
 	}
-	public function dropMenuCat($name="CatID",$print=TRUE){
+	public function dropMenuCat($name="CatID",$default=0,$print=TRUE){
 		$html="<select name=$name style='min-width:11.7em;'>";
 		$cats=$this->getAllCategories();
 		foreach($cats as $c){
 			$id=$c['ID'];
 			$name=$c['Cat'];
-			$html .= "<option value='$id'>$name</option>";
+			$html .= "<option value='$id'";
+			if($default==$id){$html .= " selected='selected' ";}
+			$html .=">$name</option>";
 		}
 		$html .= "</select>";
 		if($print){echo $html;}
 		return $html;
 	}
-	public function dropMenuGroup($name="GroupID",$print=TRUE){
+	public function dropMenuGroup($name="GroupID",$default=0,$print=TRUE){
 		$html="<select name=$name style='min-width:11.7em;'><option value=''></option>";
 		$groups=$this->getAllGroups();
 		foreach($groups as $g){
 			$id=$g['ID'];
 			$name=$g['Name'];
-			$html .= "<option value='$id'>$name</option>";
+			$html .= "<option value='$id'";
+			if($default==$id){$html .= " selected='selected' ";}
+			$html .=">$name</option>";
 		}
 		$html .= "</select>";
 		if($print){echo $html;}

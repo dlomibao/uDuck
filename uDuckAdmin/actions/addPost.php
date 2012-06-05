@@ -6,8 +6,25 @@
  require_once "./Act.php";
  session_start();
  if(!act::checkLvl(1)){die();}//check if user level is high enough to post anything
-
- //$id		=$_POST['ID']; //don't need in add post because AutoIncrement
+ $sql='';
+ 
+ if(isset($_POST['id']) && $_POST['id']!='')
+ {
+ 	$id=$_POST['id'];
+	/*$sql='INSERT INTO `Post` (ID,Title, Author, Body,Caption,Thumb,GroupID,CatID,Tags,Modified,Visible)
+           VALUES (:id, :title, :auth,:body,:capt,:thumb,:gid,:cid,:tags,NOW(),:vis)';
+	 */
+	$sql='UPDATE `Post` 
+		  SET    Title= :title, Author= :auth, Body= :body,Caption= :capt,Thumb= :thumb,GroupID= :gid,CatID= :cid,Tags= :tags,Modified=NOW(),Visible=:vis
+		  WHERE  ID=:id';
+	echo "is set";
+ }else
+ {
+ 	echo "not set";
+ 	$id='';
+ 	$sql='INSERT INTO `Post` (ID,Title, Author, Body,Caption,Thumb,GroupID,CatID,Tags,Created,Modified,Visible)
+          VALUES (:id,:title, :auth,:body,:capt,:thumb,:gid,:cid,:tags,NOW(),NOW(),:vis)';
+ }
  $title	=$_POST['Title'];
  $auth	=$_POST['Author'];//uID
  $body	=$_POST['Body'];
@@ -16,10 +33,11 @@
  $gid	=$_POST['GroupID'];
  $cid	=$_POST['CatID'];
  $tags	=$_POST['Tags'];
+ print_r($_POST);
  if(isset($_POST['Visible'])){
 	 $vis	=1;
  }else{$vis=0;}
-  //$_POST['Modified'];
+ 
   
   //individual level checks
   if(!act::checkLvl(15)){//check for setting Authors of different id than logged in
@@ -29,7 +47,7 @@
   	$vis=0;//visible = false
   }
  
- 
+ if($gid==''){$gid=NULL;}
  //prepare and execute
  $host=DB_HOST;
  $dbuser=DB_USER;
@@ -37,12 +55,14 @@
  $db=DB_NAME; 
 
  $db = new PDO("mysql:host=$host;dbname=$db", $dbuser, $dbpass);
- $statement = $db->prepare('INSERT INTO `Post` (Title, Author, Body,Caption,Thumb,GroupID,CatID,Tags,Created,Modified,Visible)
-                                       VALUES (:title, :auth,:body,:capt,:thumb,:gid,:cid,:tags,NOW(),NOW(),:vis)');
- $statement->execute(
- 				array(':title'=>$title,':auth'=>$auth,':body'=>$body,':capt'=>$capt,
+ /*$statement = $db->prepare('INSERT INTO `Post` (ID,Title, Author, Body,Caption,Thumb,GroupID,CatID,Tags,Created,Modified,Visible)
+                                       VALUES (:id, :title, :auth,:body,:capt,:thumb,:gid,:cid,:tags,NOW(),NOW(),:vis)');*/
+$statement = $db->prepare($sql);                                      
+ if(!$statement->execute(
+ 				array(':id'=>$id,':title'=>$title,':auth'=>$auth,':body'=>$body,':capt'=>$capt,
  				      ':thumb'=>$thumb,':gid'=>$gid  ,':cid'=>$cid  ,':tags'=>$tags,':vis'=>$vis)
-					);
+					)){print "error code: ".$statement->errorCode()." ";
+					   print_r($statement->errorInfo());}
 
  echo "post added<br>";
  ?>
