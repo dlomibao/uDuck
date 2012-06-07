@@ -1,4 +1,4 @@
-uDuck Content Management System
+duDuck Content Management System
 ===============================
 Created By Derek Lomibao
 MIT license.
@@ -15,6 +15,6 @@ right now, use the install.php script in the uDuckAdmin folder to install. be su
 (eventually, the setup.php will handle setup in a more user friendly manner ) if you are using shared hosting or have limited 
 mysql privileges, you may need to create the users and db manually, then run the install script again to add the tables
 
-uDuck is split into admin/backend and frontend acessor class 
+uDuck is split into admin/backend and frontend accessor class 
 
 

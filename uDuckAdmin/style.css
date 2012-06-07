@@ -75,6 +75,16 @@ li ul{
 	display: block;
 }
 .greyedout{
-	color:grey;
+	color:gray;
 	
+}
+.realtable,th,td{
+	border: 1px solid gray;
+	border-collapse:collapse;
+	padding:5px;
+	
+}
+td{
+	max-width:12em;
+	overflow: hidden;
 }

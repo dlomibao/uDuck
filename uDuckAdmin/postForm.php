@@ -17,7 +17,7 @@ if(isset($_GET['ID']) ){
 	//print_r($p);
 }else{
 	$postvalue='';
-	$p=Array ( 'Title' => '','Author'=>'','Body' => 'Enter Post Body Here.','Caption' => '','Thumb' => '','GroupID'=>'','CatID'=>'','Tags' => '','Visible'=>'1');
+	$p=Array ( 'Title' => '','Author'=>'','Body' => 'Enter Post Body Here.','Caption' => '','Thumb' => '','GroupID'=>'','CatID'=>'','Tags' => '','Visible'=>'1', 'Created'=>'new post','Modified'=>'new post');
 	
 }
 ?>
@@ -25,12 +25,13 @@ if(isset($_GET['ID']) ){
 
 <div class="cp_body" id="postForm">
 	<!--uses nicedit for textarea richtexxt-->
-	 <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+	 <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+	 <script type="text/javascript">
 		//<![CDATA[
         	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
   		//]]>
   	</script>
-	<h1>uDuck Post Form</h1>
+	<h2>uDuck Post Form</h2>
 	
 
 	<form action='actions/addPost.php' method='post'>
@@ -46,21 +47,22 @@ if(isset($_GET['ID']) ){
 		</table>
 		<input type="text" name="Title"   placeholder="Enter Title Here" title="Title"   value="<?php echo $p['Title']; ?>" style="width:90%;"/>
 		<input type="text" name="Caption" placeholder="Caption"          title="Caption" value="<?php echo $p['Caption']; ?>" style="width:90%;"/>
-	
-<!--////////////////////////////////////////////////////-->
 		<textarea name="Body" placeholder="Enter Post Body Here." style="width: 90%;" rows="15"><?php echo $p['Body'];?></textarea>
 		<table>
-			<td>Thumbnail URL: </td>
-			<td colspan="3"><input type="text" name="Thumb" value='<?php echo $p['Thumb']; ?>' size="90" placeholder="http://" /></td>
-		<tr>
-			<td>Tags: </td>
-			<td colspan="3"><input type="text" name="Tags" value='<?php echo $p['Tags']; ?>' size="90"/></td>
-		</tr>
-		
-		<tr>
-			<td>Visible: <input type="checkbox" value=1 name="Visible" <?php if($p['Visible']>0){echo "checked";}?>/></td>
-			<td>ID: <input type="text" name="id" readonly="readonly" size="5" value='<?php echo $postvalue; ?>' placeholder="New Post" class="greyedout"/></td>
-		</tr>
+			<tr>
+				<td>Thumbnail URL: </td>
+				<td colspan="3"><input type="text" name="Thumb" value='<?php echo $p['Thumb']; ?>' size="90" placeholder="http://" /></td>
+			</tr>
+			<tr>
+				<td>Tags: </td>
+				<td colspan="3"><input type="text" name="Tags" value='<?php echo $p['Tags']; ?>' size="90"/></td>
+			</tr>
+			<tr>
+				<td>Visible: <input type="checkbox" value=1 name="Visible" <?php if($p['Visible']>0){echo "checked";}?>/></td>
+				<td>ID: <input type="text" name="id" readonly="readonly" size="5" value='<?php echo $postvalue; ?>' placeholder="New Post" class="greyedout"/></td>
+				<td>Created: <?php echo $p['Created'];?></td>
+				<td>Modified: <?php echo $p['Modified'];?></td>
+			</tr>
 		</table>
 	
 	

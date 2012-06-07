@@ -13,8 +13,14 @@ class uDuck_Admin {
 	private $PASS = DB_USERPASS_RO;
 	
 	public $con;//the connection object (TODO: make private for production code )
+	
 	public $posts;//holds the last accessed group of posts as an array of arrays
 	public $apost;//holds the last accessed post as an array
+	
+	//requires an initial call to fill, after grab from db it will be held in memory 
+	public $u;//holds user table as array(reduces need to query the user table)
+	public $c;//holds cat table as array(reduces need to query category table)
+	public $g;//holds group table as array (reduces need to query db)
 	
 	
 	/**
@@ -57,6 +63,15 @@ class uDuck_Admin {
 	}
 	public function getAllPosts(){
 		$this->posts  = $this->con->query("SELECT * FROM `post`")->fetchAll();
+		return $this->posts;
+	}
+	/**gets all posts offset by the start with a limit of the count
+	 * starts at 0
+	 * not to be confused with id numbers, just the raw rows
+	 * @return posts
+	 * */
+	public function getPostRange($start=0,$count=20){
+		$this->posts = $this->con->query("SELECT * FROM `post` LIMIT $count OFFSET $start");
 		return $this->posts;
 	}
 	/**returns an array of the first post that matches the id
@@ -106,7 +121,8 @@ class uDuck_Admin {
 	
 	//--User Accessors--///////////////////////////////////
 	public function getAllUsers(){
-		return $this->con->query("SELECT * FROM `User`")->fetchAll();
+		$this->u=$this->con->query("SELECT * FROM `User`")->fetchAll();
+		return $this->u;
 	}
 	public function getUserByID($id){
 		$prep=$this->con->prepare("SELECT * FROM `User` WHERE ID=:id");
@@ -123,7 +139,8 @@ class uDuck_Admin {
 	
 	//--Category Accessors--///////////////////////////////////////////////////
 	public function getAllCategories(){
-		return $this->con->query("SELECT * FROM `Categories`")->fetchAll();
+		$this->c=$this->con->query("SELECT * FROM `Categories`")->fetchAll();
+		return $this->c;
 	}
 	public function getCategoryByID($id){
 		$prep=$this->con->prepare("SELECT * FROM `Categories` WHERE ID=:id");
@@ -133,7 +150,8 @@ class uDuck_Admin {
 	
 	//--Group Accessors--//////////////////////////////////////////////////////
 	public function getAllGroups(){
-		return $this->con->query("SELECT * FROM `Group`")->fetchAll();
+		$this->g=$this->con->query("SELECT * FROM `Group`")->fetchAll();
+		return $this->g;
 	}
 	public function getGroupsByCatID($id){
 		$prep=$this->con->prepare("SELECT * FROM `Group` WHERE CatID=:id");
@@ -189,7 +207,19 @@ class uDuck_Admin {
 		if($print){echo $html;}
 		return $html;
 	}
-	
+	//--other tools--//////////////////////////////////////
+	public function returnRow($id, $array){
+		foreach($array as $row){
+			if($row['ID']==$id){
+				return $row;
+			}	
+		}
+		return FALSE;
+	}
+	public function returnRowItem($id,$array,$item){
+		$row=$this->returnRow($id,$array);
+		return $row[$item];
+	}
 	
 }
 
