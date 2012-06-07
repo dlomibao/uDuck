@@ -43,8 +43,8 @@
 	</div><!--end header div-->
 	<div id=sidebardiv>
 		<ul  class='sans'>
-			<li><a href="test.php">Post</a>
-				<ul><li>add new post</li>
+			<li><a href="postPage.php">Post</a>
+				<ul><li><a href="postForm.php">add new post</a></li>
 					<li>edit/delete post</li>
 				</ul>
 			</li>
