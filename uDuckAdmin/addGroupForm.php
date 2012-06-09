@@ -1,5 +1,7 @@
 <?php include 'cp_header.php'; ?>
 	<div class='cp_body' id='groupbody'>
+	
+	<h2>Add Group</h2>
 	<form action='actions/addGroup.php' method='post'>
 	Group Name: <input type="text" name="name" /><br>
 	Caption   : <input type="text" name="caption" /><br>

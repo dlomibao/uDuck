@@ -88,14 +88,14 @@ class uDuck_Admin {
 	 * (might be usefull for permalinks)
 	 */
 	public function getPostByTitle($title){
-		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Title=:title");
+		$prep=$this->con->prepare("SELECT * FROM `Post` WHERE Title=:title");
 		$prep->execute(array(':title'=>$title));
 		$this->apost = $prep->fetch();
 		$prep->closeCursor();
 		return $this->apost;
 	}
 	public function getAllPostsByAuthor($auth){
-		$prep=$this->con->prepare("SELECT * FROM `post` WHERE Author=:auth");
+		$prep=$this->con->prepare("SELECT * FROM `Post` WHERE Author=:auth");
 		$prep->execute(array(':auth'=>$auth));
 		$this->posts = $prep->fetchAll();
 		
@@ -103,7 +103,7 @@ class uDuck_Admin {
 		
 	}
 	public function getAllPostsByCatID($cat){
-		$prep=$this->con->prepare("SELECT * FROM `post` WHERE CatID=:cat");
+		$prep=$this->con->prepare("SELECT * FROM `Post` WHERE CatID=:cat");
 		$prep->execute(array(':cat'=>$cat));
 		$this->posts = $prep->fetchAll();
 		
@@ -147,6 +147,10 @@ class uDuck_Admin {
 		$prep->execute(array(':id'=>$id));
 		return $prep->fetch();
 	}
+		public function getCategoriesRange($start=0,$count=20){
+		$this->c = $this->con->query("SELECT * FROM `Categories` LIMIT $count OFFSET $start");
+		return $this->c;
+	}
 	
 	//--Group Accessors--//////////////////////////////////////////////////////
 	public function getAllGroups(){
@@ -163,6 +167,10 @@ class uDuck_Admin {
 		$prep=$this->con->prepare("SELECT * FROM `Group` WHERE ID=:id");
 		$prep->execute(array(':id'=>$id));
 		return $prep->fetch();
+	}
+	public function getGroupRange($start=0,$count=20){
+		$this->g = $this->con->query("SELECT * FROM `Group` LIMIT $count OFFSET $start");
+		return $this->g;
 	}
 	//--uDuck drop menu-//////////////////////
 	public function dropMenuUser($name="UserID",$default=0,$print=TRUE){

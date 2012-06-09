@@ -1,5 +1,5 @@
 <?php
-/**Delete the posts that were selected 
+/**Delete the groups that were selected 
  * 
  */
 require_once "./Act.php";
@@ -13,7 +13,7 @@ if(!act::checkLvl(10)){die();}//check if user level is high enough to delete any
 $db = new PDO("mysql:host=$host;dbname=$db", $dbuser, $dbpass);//create connection
 $sel=array();
 if(isset($_POST['selected'])){$sel=$_POST['selected'];}
-$sql="DELETE FROM `Post` WHERE ID=:sel";
+$sql="DELETE FROM `Group` WHERE ID=:sel";
 $statement = $db->prepare($sql); 
 if(count($sel)<1){echo "nothing selected";die();}else{
 	while (list ($key,$val) = @each ($sel)) { 

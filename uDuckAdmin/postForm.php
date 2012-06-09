@@ -31,7 +31,7 @@ if(isset($_GET['ID']) ){
         	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
   		//]]>
   	</script>
-	<h2>uDuck Post Form</h2>
+	<h2>Edit Post</h2>
 	
 
 	<form action='actions/addPost.php' method='post'>

@@ -44,13 +44,13 @@
 	<div id=sidebardiv>
 		<ul  class='sans'>
 			<li><a href="postPage.php">Post</a>
-				<ul><li><a href="postForm.php">add new post</a></li>
-					<li>edit/delete post</li>
+				<ul><li><a href="postForm.php" class="sidemenu">add new post</a></li>
+					<li><a href="postPage.php" class="sidemenu">edit/delete post</a></li>
 				</ul>
 			</li>
-			<li><a href="test.php">Group</a>
-				<ul><li>add new group</li>
-					<li>edit/delete group</li>
+			<li><a href="groupPage.php">Group</a>
+				<ul><li><a href="groupForm.php" class="sidemenu">add new group</a></li>
+					<li><a href="groupPage.php" class="sidemenu">edit/delete group</a></li>
 				</ul>
 			</li>
 			<li><a href="test.php">Category</a>
