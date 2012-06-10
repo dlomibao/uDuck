@@ -53,9 +53,9 @@
 					<li><a href="groupPage.php" class="sidemenu">edit/delete group</a></li>
 				</ul>
 			</li>
-			<li><a href="test.php">Category</a>
-				<ul><li>add new category</li>
-					<li>edit/delete category</li>
+			<li><a href="catPage.php">Category</a>
+				<ul><li><a href="catForm.php" class="sidemenu">add new category</a></li>
+					<li><a href="catPage.php" class="sidemenu">edit/delete category</a></li>
 				</ul>
 			</li>
 		</ul>
