@@ -36,7 +36,7 @@ $dbpass=DB_USERPASS;
 $db=DB_NAME; 
 
 $db = new PDO("mysql:host=$host;dbname=$db", $dbuser, $dbpass);
-$statement = $db->prepare('INSERT INTO `user` (Name, Email, Hash, Salt, Permissions)
+$statement = $db->prepare('INSERT INTO `User` (Name, Email, Hash, Salt, Permissions)
                                        VALUES (:name, :email, :hash, :salt, :permissions)');
 $statement->execute(array(':name' => $username, ':email' => $email, ':hash' => $hash, ':salt' => $salt, ':permissions' => $permissions));
 

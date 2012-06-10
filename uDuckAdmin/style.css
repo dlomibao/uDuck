@@ -1,4 +1,4 @@
-
+/*uDuckAdmin CSS code*/
 body{
 	background-color:#808080;
 }
@@ -34,7 +34,7 @@ body{
 
 
 #sidebardiv{
-	min-height:500px;
+	min-height:700px;
 	height:200%;
 	width:150px;
 	float:left;
@@ -74,3 +74,25 @@ li ul{
 	float:right;
 	display: block;
 }
+.greyedout{
+	color:gray;
+	
+}
+
+.realtable,.realtable th, .realtable td{
+	border: 1px solid gray;
+	border-collapse:collapse;
+	padding:5px;
+
+	
+}
+.realtable td{
+	max-width:12em;
+	overflow: hidden;
+}
+
+.sidemenu{text-decoration:none;}
+a.sidemenu:link {color:#222244;}      /* unvisited link */
+a.sidemenu:visited {color:#222244;}  /* visited link */
+a.sidemenu:hover {color:#9999bb;}  /* mouse over link */
+a.sidemenu:active {color:#222244;}  /* selected link */

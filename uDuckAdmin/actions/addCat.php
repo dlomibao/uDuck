@@ -15,7 +15,7 @@ $dbpass=DB_USERPASS;
 $db=DB_NAME; 
 
 $db = new PDO("mysql:host=$host;dbname=$db", $dbuser, $dbpass);
-$statement = $db->prepare('INSERT INTO `categories` (Cat, GroupName)
+$statement = $db->prepare('INSERT INTO `Categories` (Cat, GroupName)
                                        VALUES (:cat, :gname)');
 $statement->execute(array(':cat' => $cat, ':gname' => $gname));
 echo "category added<br>";
