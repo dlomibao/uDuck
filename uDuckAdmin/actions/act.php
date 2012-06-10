@@ -55,7 +55,7 @@
 	/**
 	 * 
 	 */
-	public static function listFromTable($tableName='post',$showArray=array('ID','Title','Author'),$start=0,$end=30){
+	public static function listFromTable($tableName='Post',$showArray=array('ID','Title','Author'),$start=0,$end=30){
 		$html='';
 		$host=DB_HOST;
 		$dbuser=DB_USER;

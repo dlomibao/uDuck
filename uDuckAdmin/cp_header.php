@@ -1,13 +1,20 @@
 <?php
-	if($_SERVER["HTTPS"] != "on") {//make sure to page uses https
+	//require_once "uD_config.php";
+
+
+	session_start();
+	//require_once "uD_config.php";
+	require_once "adminAct.php";
+	$usehttps=USEHTTPS;
+	if($usehttps && isset($_SERVER["HTTPS"])){
+		header('Strict-Transport-Security: max-age=500');
+	} elseif ($usehttps && !isset($_SERVER['HTTPS'])){//make sure to page uses https
 	   header("HTTP/1.1 301 Moved Permanently");
 	   header("Location: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
 	   exit();
 	}
 
-	session_start();
-	//require_once "uD_config.php";
-	require_once "adminAct.php";
+	
 	if(!isset($_SESSION['uID'])){//if you aren't logged in go to login page
 		$_SESSION['origin']=$_SERVER['SCRIPT_NAME'];// store current page for redirect back later
 		/* Redirect browser */
@@ -36,19 +43,19 @@
 	</div><!--end header div-->
 	<div id=sidebardiv>
 		<ul  class='sans'>
-			<li><a href="test.php">Post</a>
-				<ul><li>add new post</li>
-					<li>edit/delete post</li>
+			<li><a href="postPage.php">Post</a>
+				<ul><li><a href="postForm.php" class="sidemenu">add new post</a></li>
+					<li><a href="postPage.php" class="sidemenu">edit/delete post</a></li>
 				</ul>
 			</li>
-			<li><a href="test.php">Group</a>
-				<ul><li>add new group</li>
-					<li>edit/delete group</li>
+			<li><a href="groupPage.php">Group</a>
+				<ul><li><a href="groupForm.php" class="sidemenu">add new group</a></li>
+					<li><a href="groupPage.php" class="sidemenu">edit/delete group</a></li>
 				</ul>
 			</li>
-			<li><a href="test.php">Category</a>
-				<ul><li>add new category</li>
-					<li>edit/delete category</li>
+			<li><a href="catPage.php">Category</a>
+				<ul><li><a href="catForm.php" class="sidemenu">add new category</a></li>
+					<li><a href="catPage.php" class="sidemenu">edit/delete category</a></li>
 				</ul>
 			</li>
 		</ul>

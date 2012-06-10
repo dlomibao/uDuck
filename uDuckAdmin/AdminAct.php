@@ -16,6 +16,15 @@
 		$html .='</ul>';
 		echo $html;
  	}
+	public static function dropMenuUser(){
+		$html="";
+	}
+	public static function dropMenuCat(){
+		$html="";
+	}
+	public static function dropMenuGroup($cat=-1){
+		$html="";
+	}
 	
 	
  }

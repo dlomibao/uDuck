@@ -1,6 +1,9 @@
 <?php
-	
-	if($_SERVER["HTTPS"] != "on") {//make sure to page uses https
+	require_once "uD_config.php";
+	$usehttps=USEHTTPS;
+	if($usehttps && isset($_SERVER["HTTPS"])){
+		header('Strict-Transport-Security: max-age=500');
+	} elseif ($usehttps && !isset($_SERVER['HTTPS'])){//make sure that page uses https
 	   header("HTTP/1.1 301 Moved Permanently");
 	   header("Location: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]);
 	   exit();

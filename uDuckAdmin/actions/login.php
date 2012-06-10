@@ -15,7 +15,7 @@
  $db=DB_NAME; 
  
  $db = new PDO("mysql:host=$host;dbname=$db", $dbuser, $dbpass);
- $statement = $db->prepare('SELECT * FROM `user` WHERE `Name`=:user');
+ $statement = $db->prepare('SELECT * FROM `User` WHERE `Name`=:user');
  $statement->execute(array(':user' => $username));
  if($userdata=$statement->fetch()){
 	$hash=$userdata['Hash'];
