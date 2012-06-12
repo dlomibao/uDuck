@@ -10,7 +10,7 @@
 			$c=Array ( 'Cat' => '','GroupName'=>'');
 		}
 ?>
-	<div class='cp_body' id='catbody'>
+	<div class='cp_body' id='catForm'>
 		<h2>Edit Category</h2>
 		<form action='actions/addCat.php' method='post'>
 			<table>

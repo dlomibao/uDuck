@@ -12,7 +12,7 @@ include 'uD_Admin.php';
 $admin= new uDuck_Admin();//auto connect
 if(isset($_GET['start'])){$start=$_GET['start'];}else{$start=0;}//sets the start of the post listing range based on MySQL OFFSET 
 if(isset($_GET['count'])){$count=$_GET['count'];}else{$count=25;}//sets the number of posts to show based on MySQL LIMIT
-$p=$admin->getCategoriesRange($start,$count);
+$c=$admin->getCategoriesRange($start,$count);
 //build post table
 		$showArray=array('Cat','GroupName');
 		$html ='';
@@ -22,7 +22,7 @@ $p=$admin->getCategoriesRange($start,$count);
 		}
 		$html .= '</tr>';
 		//<a href='postForm.php?ID=$id'> 
-		foreach($p as $row){
+		foreach($c as $row){
 			$id=$row['ID'];
 			$html .= "<tr>";
 			foreach($showArray as $f){
@@ -39,7 +39,7 @@ $p=$admin->getCategoriesRange($start,$count);
 		
 ?>
 
-<div class="cp_body" id="postPage">
+<div class="cp_body" id="catPage">
 	<h2>Categories</h2>
 	<a href="catForm.php">Create New Category</a><br><br>
 	<form action="actions/deleteCats.php" method="post"><!--eventually refactor to a single delete.php with different modes aka delete.php?Mode=group-->

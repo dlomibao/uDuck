@@ -40,7 +40,7 @@ $admin->getAllCategories();
 		
 ?>
 
-<div class="cp_body" id="postPage">
+<div class="cp_body" id="groupPage">
 	<h2>Groups</h2>
 	<a href="groupForm.php">Create New Group</a><br><br>
 	<form action="actions/deleteGroups.php" method="post"><!--eventually refactor to a single delete.php with different modes aka delete.php?Mode=group-->

@@ -12,7 +12,7 @@
 	  
  ?>
 
-	<div class='cp_body' id='groupbody'>
+	<div class='cp_body' id='groupForm'>
 	
 	<h2>Edit Group</h2>
 	<form action='actions/addGroup.php' method='post'>

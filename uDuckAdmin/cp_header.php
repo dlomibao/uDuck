@@ -58,6 +58,8 @@
 					<li><a href="catPage.php" class="sidemenu">edit/delete category</a></li>
 				</ul>
 			</li>
+			<li><br><a href="userPage.php">Users</a>
+			</li>
 		</ul>
 	</div>
 	

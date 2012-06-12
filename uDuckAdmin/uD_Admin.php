@@ -136,6 +136,11 @@ class uDuck_Admin {
 		return $prep->fetch();
 		
 	}
+	public function getUserRange($start=0,$count=20){
+		$this->u = $this->con->query("SELECT * FROM `User` LIMIT $count OFFSET $start");
+		return $this->u;
+	}
+	
 	
 	//--Category Accessors--///////////////////////////////////////////////////
 	public function getAllCategories(){
