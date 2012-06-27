@@ -8,32 +8,17 @@ include 'cp_header.php';
 include 'uD_admin.php';
 	  $admin=new uDuck_Admin();
 	  $html="";
-	  if(isset($_GET['ID']) ){
-			if($_SESSION['uLvl']>100){
-				$uservalue=$_GET['ID'];
-				$u=$admin->getUserByID($uservalue);
-				$protected=FALSE;
-			}else{
-				$uservalue=$_SESSION['uID'];
-				$u=$admin->getUserByID($uservalue);
-				$protected=TRUE;
-			}
-			
-			$html.="";
-		}
-	  else{
 	  		if($_SESSION['uLvl']>10){//this is a mess fix the level checking system going forward
 				$uservalue='';
 				$u=Array ( 'Name' => '','Email'=>'','Permissions' => '1');}
 			$protected=!($_SESSION['uLvl']>100);//if the user level is too low set permissions to min
-		}
 	  
  ?>
 
-	<div class='cp_body' id='userForm'>
+	<div class='cp_body' id='newUserForm'>
 	
-	<h2>Edit User</h2>
-	<form action='actions/addUser.php' method='post'>
+	<h2>New User</h2>
+	<form action='actions/user/newUser.php' method='post'>
 	<table>
 	<tr>
 		<td>User Name:</td>
@@ -64,9 +49,6 @@ include 'uD_admin.php';
 		<td><input type="password" name="pwordv"></td>
 	</tr>
 	</tbody>
-	<tr>
-		<td>ID: <input type="text" name="id" readonly="readonly" size="6" value='<?php echo $uservalue; ?>' placeholder="New User" class="greyedout"/></td>
-	</tr>
 	</table>
 	<br>
 	<button type='submit'>Send</button>

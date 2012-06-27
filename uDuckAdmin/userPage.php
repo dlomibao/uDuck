@@ -13,7 +13,7 @@ if(isset($_GET['count'])){$count=$_GET['count'];}else{$count=25;}//sets the numb
 $html="";
 if($level>100){//if level is high enough show other users
 	$u=$admin->getUserRange($start,$count);
-	$html.="<h3>Other Users</h3>
+	$html.="<br><a href='newUserForm.php'>Create New User</a><br><h3>Other Users</h3>
 			<form action='actions/deleteUsers.php' method='post'>";
 //build post table
 		$showArray=array('Name','Email','Created','Permissions');

@@ -8,6 +8,7 @@ It doesn't come with fancy templates.
 It is supposed to be small and quick.
 It makes it easy to turn static layouts into dynamic pages.
 It makes it easy to add content.
+It is more secure than linkedIn!(uses sha256 and a different salt for each user [will probably change to using bcrypt in the future])
 
 Now uses nicedit for post forms!
 
